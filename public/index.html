@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Voyager - A retro-future arcade space exploration game. Connect the stars and make friends with Zarg 966-Z.">
+    <title>VOYAGER | Galactic Exploration</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Firebase SDKs (Compat versions for reserved URL loading) -->
+    <script defer src="/__/firebase/12.8.0/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/12.8.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/12.8.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Automatic initialization script from Firebase Hosting -->
+    <script defer src="/__/firebase/init.js"></script>
+    
+    <!-- Voyager Shared Bridge & Persistence -->
+    <script defer src="leaderboard.js"></script>
+    
+    <!-- Game Engine (Owned by Agent A) -->
+    <script defer src="game.js"></script>
+</head>
+<body>
+    <canvas id="game-canvas"></canvas>
+
+    <!-- UI Overlay System -->
+    <div id="ui-container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="overlay">
+            <h1 class="glitch" data-text="VOYAGER">VOYAGER</h1>
+            <div class="narrative">
+                <p>ASTRONAUT 311-C:</p>
+                <p>MISSION: RECONSTRUCT THE 12 ZODIAC CONSTELLATIONS.</p>
+                <p>HOW: FLY OVER THE <span style="color:white; text-shadow: 0 0 10px white;">PULSING STARS</span> TO CONNECT THEM.</p>
+                <p>FOLLOW THE NEON PATH BEFORE THE VOID CLOSES.</p>
+            </div>
+            <p class="blink">PRESS ENTER TO LAUNCH</p>
+        </div>
+
+        <!-- Failure Screen -->
+        <div id="fail-screen" class="overlay hidden">
+            <h1 class="alert">LOST IN SPACE</h1>
+            <div class="narrative">
+                <p>You have failed your mission, Astronaut 311-A.</p>
+                <p>Humanity remains alone among the stars.</p>
+                <p>Unless you choose to try again...</p>
+            </div>
+            <p class="blink">PRESS ENTER TO TRY AGAIN</p>
+        </div>
+
+        <!-- Win Screen -->
+        <div id="win-screen" class="overlay hidden">
+            <h1 class="success">ZARGABORG FRIENDS</h1>
+            
+            <div id="zarg-container">
+                <img src="zarg.svg" alt="Zarg 966-Z" id="zarg-img">
+            </div>
+
+            <div class="narrative">
+                <p>Hello, traveler. I am Zarg 966-Z. Welcome to Zargaborg!</p>
+                <p>I just pumped some fresh oxygen into my biosphere! So come on in, kick your boots off, and tell me all about your travels.</p>
+            </div>
+            
+            <p class="blink">PRESS ENTER FOR RECORDS</p>
+        </div>
+
+        <!-- HUD (Heads Up Display) -->
+        <div id="hud" class="hidden">
+            <div id="hud-timer">TIME: <span id="timer-value">60</span></div>
+            <div id="hud-level">CONSTELLATION: <span id="level-name-value">---</span></div>
+            <div id="hud-progress">STARS: <span id="stars-value">0/0</span></div>
+        </div>
+
+        <!-- Leaderboard Screen -->
+        <div id="leaderboard-screen" class="overlay hidden">
+            <h1>GALACTIC RECORDS</h1>
+            
+            <div id="score-info">
+                <span>MISSION SCORE:</span>
+                <span id="current-score-value">0</span>
+            </div>
+
+            <div class="leaderboard-container">
+                <ul id="score-list">
+                    <!-- High scores injected here -->
+                    <li>LOADING RECORDS...</li>
+                </ul>
+            </div>
+
+            <div id="initials-submission">
+                <p>TRANSMIT YOUR INITIALS (3 LETTERS)</p>
+                <div class="input-wrapper">
+                    <input type="text" id="initials-input" maxlength="3" autocomplete="off" spellcheck="false">
+                </div>
+                <p class="hint">PRESS ENTER TO TRANSMIT</p>
+            </div>
+
+            <div id="restart-message" class="hidden">
+                <p class="blink">PRESS ENTER TO RESTART MISSION</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
