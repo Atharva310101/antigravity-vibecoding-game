@@ -2,7 +2,7 @@
 
 Voyager is a **Retro-Future** arcade space exploration game built with a modern web stack. Navigate the cosmos as Astronaut 311-A, reconstruct ancient zodiac constellations, and make friends with Zarg 966-Z in the distant Zargaborg system.
 
-![Voyager Win Screen Proof](https://github.com/user-attachments/assets/5c378544-42f8-410a-9d29-a36c8430e37b)
+![Voyager Win Screen Proof](assets/voyager-preview.png)
 
 ## 🌌 The Mission
 
